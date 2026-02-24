@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Reset Password",
+    "content": "Users can reset password from Settings > Security. Click on 'Reset Password' and follow the email verification process."
+  },
+  {
+    "title": "Refund Policy",
+    "content": "Refunds are allowed within 7 days of purchase. Contact support team with your order ID to initiate the refund process."
+  },
+  {
+    "title": "Account Setup",
+    "content": "To set up your account, click on the signup button and provide your email address. You'll receive a verification email within 5 minutes."
+  },
+  {
+    "title": "Payment Methods",
+    "content": "We accept credit cards, debit cards, PayPal, and bank transfers. All payments are processed securely through our payment gateway."
+  },
+  {
+    "title": "Subscription Plans",
+    "content": "We offer three subscription plans: Basic ($9/month), Pro ($19/month), and Enterprise ($49/month). Each plan includes different features and usage limits."
+  },
+  {
+    "title": "Data Privacy",
+    "content": "We take data privacy seriously. All user data is encrypted and stored securely. We never share your personal information with third parties without consent."
+  },
+  {
+    "title": "Mobile App",
+    "content": "Our mobile app is available for both iOS and Android devices. You can download it from the App Store or Google Play Store."
+  },
+  {
+    "title": "Customer Support Hours",
+    "content": "Our customer support team is available Monday through Friday, 9 AM to 6 PM EST. We also offer 24/7 email support for urgent issues."
+  },
+  {
+    "title": "API Integration",
+    "content": "Developers can integrate our service using REST API. Documentation is available at docs.example.com/api. API keys can be generated from your account dashboard."
+  },
+  {
+    "title": "Cancellation Policy",
+    "content": "You can cancel your subscription at any time from your account settings. Cancellation takes effect at the end of the current billing period."
+  }
+]
