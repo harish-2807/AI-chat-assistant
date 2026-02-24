@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || (window.location.hostname === 'localhost' ? 'http://localhost:5000' : 'https://ai-chat-assistant.onrender.com');
-
 function App() {
   const [sessionId, setSessionId] = useState('');
   const [messages, setMessages] = useState([]);
@@ -41,22 +39,38 @@ function App() {
     setShowChat(messages.length > 0);
   }, [messages]);
 
-  const generateNewSession = () => {
-    const newSessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-    setSessionId(newSessionId);
-    localStorage.setItem('chatSessionId', newSessionId);
-    setMessages([]);
-    setError('');
-    setShowChat(false);
+  const generateNewSession = async () => {
+    try {
+      const response = await fetch(`/api/sessions`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to create session');
+      }
+      
+      const data = await response.json();
+      setSessionId(data.sessionId);
+      localStorage.setItem('chatSessionId', data.sessionId);
+      setMessages([]);
+      setError('');
+      setShowChat(false);
+    } catch (err) {
+      setError('Failed to create new session. Please try again.');
+      console.error('Session creation error:', err);
+    }
   };
 
   const loadConversation = async (sid) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/conversations/${sid}`);
+      const response = await fetch(`/api/conversations/${sid}`);
       const data = await response.json();
       
       if (response.ok) {
-        setMessages(data.messages || []);
+        setMessages(data || []);
       } else {
         console.error('Failed to load conversation:', data.message);
       }
@@ -89,7 +103,7 @@ function App() {
     setMessages(prev => [...prev, tempUserMessage]);
 
     try {
-      const response = await fetch(`${API_BASE_URL}/api/chat`, {
+      const response = await fetch(`/api/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
